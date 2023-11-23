@@ -8,7 +8,7 @@ public class WriteToXML {
         try {
             // Create a PlayerData object (replace this with your actual data)
             PlayerData playerData = new PlayerData();
-            playerData.setUp("John Doe", "Male", "USA", "Forward", "1990-01-01", "2022-12-31");
+
 
             // Create JAXB context and marshaller
             JAXBContext context = JAXBContext.newInstance(PlayerData.class);

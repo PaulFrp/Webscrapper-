@@ -15,6 +15,9 @@ class PlayerData {
     private String died;
     @XmlElement
     private String position;
+
+    @XmlElement
+    private String national_team;
     @XmlElementWrapper(name = "teams")
     @XmlElement(name = "team")
     private List<String> teams;
@@ -25,13 +28,14 @@ class PlayerData {
         return player;
     }
 
-    public void setUp(String player, String sex, String nationality, String position, String born, String died ) {
+    public void setUp(String player, String sex, String nationality, String position, String born, String died, String national_team ) {
         this.player = player;
         this.sex = sex;
         this.nationality = nationality;
         this.position = position;
         this.born = born;
         this.died = died;
+        this.national_team = national_team;
 
     }
     public void setTeams(List<String> teams) {

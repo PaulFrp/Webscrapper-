@@ -20,6 +20,7 @@ public class JsoupExample {
             List<String> position = new ArrayList<>();
             List<String> born = new ArrayList<>();
             List<String> died = new ArrayList<>();
+            List<String> national = new ArrayList<>();
 
             Map<String, List<String>> playerTeamsMap = new LinkedHashMap<>();
             // Connect to the website and fetch HTML content
@@ -76,6 +77,7 @@ public class JsoupExample {
                 Elements aTags2 = playerDoc.select("td.infobox-data.infobox-data-a a");
                 List<String> team = new ArrayList<>();
 
+
                 if (aTags2.isEmpty()) {
                     // Add default or placeholder value
                     team.add("No value");
@@ -93,10 +95,12 @@ public class JsoupExample {
                         }else{
 
                             if (aTitle.contains("national")) {
-
+                                national.add(aResult);
+                            }else{
+                                team.add(aResult);
                             }
 
-                            team.add(aResult);
+
                         }
 
                     }
@@ -109,7 +113,7 @@ public class JsoupExample {
             int j = 0;
             for (Map.Entry<String, List<String>> entry : playerTeamsMap.entrySet()) {
                 PlayerData playerData = new PlayerData();
-                playerData.setUp(entry.getKey(),sex.get(j),nationality.get(j), position.get(j),born.get(j), died.get(j) );
+                playerData.setUp(entry.getKey(),sex.get(j),nationality.get(j), position.get(j),born.get(j), died.get(j), national.get(j) );
                 playerData.setTeams(entry.getValue());
                 wrapper.getPlayerDataList().add(playerData);
                 j++;
